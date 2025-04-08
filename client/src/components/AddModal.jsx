@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+
+
 export default function AddModal({ hide }) {
     const [username, setUsername] = useState("");
     const [title, setTitle] = useState("");
@@ -19,7 +21,7 @@ export default function AddModal({ hide }) {
         console.log("🟡 Submitting:", { username, title, tasks });
 
         try {
-            const response = await fetch("http://localhost:3000/add-to-do", {
+            const response = await fetch(`${process.env.REACT_APP_ENDPOINT_URL}/add-to-do`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, title, lists: tasks, status: false }),
